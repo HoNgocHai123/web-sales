@@ -1,0 +1,32 @@
+.vbn{
+    width: 900px;
+    margin-left: 10px;
+
+    
+}
+.vbn2{
+    width: 1000px;
+}
+.maginxuong{
+    margin-top: 100px;
+    
+}
+.custom-table {
+    background-color: #e0f7fa; 
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    background-color: #f9fafa; 
+  }
+  
+  .custom-table th {
+    background-color: #1bb054; /* Màu xanh nhạt hơn cho tiêu đề */
+  }
+  
+.CategoryBack{
+    width: 100%;
+    margin-left: 130px;
+    background-color: aqua;
+    margin-top: -30px;
+}

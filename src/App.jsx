@@ -1,115 +1,146 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import "./App.css";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import "./App.css"
 
 function App() {
-  return (
-    <div className="container">
-      <aside className="sidebar">
-        <div className="logo">QuikFin<br />Simplifi</div>
-        <a href="/home">Admin</a>
-        <nav>
-  <ul>
-    <li>Trang chủ</li>
-    <li>Giới thiệu</li>
-    <li className="active">Nội dung</li>
-    <li className="dropdown">
-      Danh mục
-      <ul className="dropdown-content">
-        <a href="./components/danhmuc.jsx"> <li> Thêm Danh Mục</li> </a>
-        <li>Danh Sách</li>
-      </ul>
-    </li>
-    <li className="dropdown">
-    Thêm Chi phí
-      <ul className="dropdown-content">
-        <li>Thêm Chi Phí</li>
-        <li>Danh Sách</li>
-      </ul>
-    </li>  
-    <li>Reports</li>
-    <li>Investments</li>
-    <li>Goals</li>
-  </ul>
-</nav>
+  const [dropdownActive1, setDropdownActive1] = useState(false);
+  const [dropdownActive2, setDropdownActive2] = useState(false);
+  const [dropdownActive3, setDropdownActive3] = useState(false);
+  const [userEmail, setUserEmail] = useState(null);
+  const navigate = useNavigate();
 
-        <div className="settings">Settings</div>
-      </aside>
-      <main className="main-content">
-        <header>
-          <input type="text" placeholder="Search or type command..." />
-          <div className="user-profile">Jane ▼</div>
-        </header>
-        <section className="overview">
-          <div className="income-spending">
-            <div className="card">Income after bills & savings<br />$00,000</div>
-            <div className="card selected">Planned Spending<br />$00,000</div>
-            <div className="card">Other Spending<br />$00,000</div>
-          </div>
-          <div className="details">
-            <div className="balance">$6,788.21<br /><span>Available</span><br /><small>$271.53 per day</small></div>
-            <div className="pie-chart">
-              <div className="chart"></div>
-              <div className="legend">
-                <span className="available"></span> Available
-                <span className="planned-spending"></span> Planned spending
-                <span className="other-spending"></span> Other spending
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUserEmail(null);
+    Swal.fire({
+      icon: "success",
+      title: "Đăng xuất thành công",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    navigate("/signin");
+  };
+
+  useEffect(() => {
+    const userEmailFromStorage = localStorage.getItem("user");
+    if (userEmailFromStorage) {
+      const userEmailObject = JSON.parse(userEmailFromStorage);
+      setUserEmail(userEmailObject.email); // Access the email property of the object
+    } else {
+      navigate("/signin");
+    }
+  }, [navigate]);
+
+  const toggleDropdown1 = () => {
+    setDropdownActive1(!dropdownActive1);
+    // Đóng dropdown 2 và 3 nếu đang mở
+    if (dropdownActive2) {
+      setDropdownActive2(false);
+    }
+    if (dropdownActive3) {
+      setDropdownActive3(false);
+    }
+  };
+
+  const toggleDropdown2 = () => {
+    setDropdownActive2(!dropdownActive2);
+    // Đóng dropdown 1 và 3 nếu đang mở
+    if (dropdownActive1) {
+      setDropdownActive1(false);
+    }
+    if (dropdownActive3) {
+      setDropdownActive3(false);
+    }
+  };
+
+  const toggleDropdown3 = () => {
+    setDropdownActive3(!dropdownActive3);
+    // Đóng dropdown 1 và 2 nếu đang mở
+    if (dropdownActive1) {
+      setDropdownActive1(false);
+    }
+    if (dropdownActive2) {
+      setDropdownActive2(false);
+    }
+  };
+
+  return (
+    <div className="container-fluid">
+      <div className="row">
+        {/* Sidebar (4 columns) */}
+        <div className="col-4 sidenav">
+          <div>
+            {userEmail ? (
+              <div className="d-flex align-items-center" style={{ marginTop: "0px" }}>
+                {/* Show user email */}
+                <p className="mb-0" style={{ color: "white" }}>
+                  <strong style={{ fontSize: "15px", marginLeft: "20px" }}>
+                    {userEmail.split("@")[0]}
+                  </strong>
+                </p>
+                <button
+                  className="btn btn-danger ms-3"
+                  onClick={handleLogout}
+                  style={{ fontSize: "15px", padding: "5px 10px" }}
+                >
+                  Đăng Xuất
+                </button>
               </div>
-            </div>
+            ) : (
+              <div></div>
+            )}
           </div>
-        </section>
-        <section className="expenses">
-          <div className="category">
-            <h2>Rent</h2>
-            <p>Spending Category: Rent</p>
-            <div className="expense-bar">
-              <span>$18.00 left</span>
-              <div className="bar">
-                <div className="filled" style={{ width: "90%" }}></div>
-              </div>
-            </div>
-            <div className="last-six-months">
-              <h3>Last 6 months</h3>
-              <div className="chart">
-                <div className="bar" style={{ height: "50%" }}>$1000</div>
-                <div className="bar" style={{ height: "80%" }}>$800</div>
-                <div className="bar" style={{ height: "60%" }}>$600</div>
-                <div className="bar" style={{ height: "70%" }}>$700</div>
-                <div className="bar" style={{ height: "90%" }}>$900</div>
-                <div className="bar" style={{ height: "40%" }}>$400</div>
-              </div>
-            </div>
+
+          <hr />
+          <a href="/HomePages">
+            <i className="fas fa-home"></i><b className="user">Trang Chủ</b> 
+          </a>
+          <button className="dropdown-btn bnm" onClick={toggleDropdown1}>
+            <i className="fas fa-list"></i> <b className="TDM account">Thêm Danh Mục</b>
+            <i className={`fa fa-caret-${dropdownActive1 ? "up" : "down"}`}></i>
+          </button>
+          <div className={`dropdown-container ${dropdownActive1 ? "active" : ""}`}>
+            <a href="/category">Thêm danh mục</a>
+            <a href="/categorylist">Danh sách</a>
           </div>
-          <div className="transactions">
-            <h3>Transactions</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Account</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Payee</th>
-                  <th>Category</th>
-                  <th>Tags</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>REITS</td>
-                  <td>3 Mar 24</td>
-                  <td>-</td>
-                  <td>Opening Balance</td>
-                  <td>Groceries</td>
-                  <td></td>
-                  <td>$3,500.00</td>
-                </tr>
-                {/* More rows as needed */}
-              </tbody>
-            </table>
+          <button className="dropdown-btn" onClick={toggleDropdown2}>
+            <i className="fas fa-dollar-sign"></i> <b className="tct account">Tạo Chi Tiêu</b>
+            <i className={`fa fa-caret-${dropdownActive2 ? "up" : "down"}`}></i>
+          </button>
+          <div className={`dropdown-container ${dropdownActive2 ? "active" : ""}`}>
+            <a href="/expense">Thêm Chi Phí</a>
+            <a href="/expenseList">Danh sách</a>
           </div>
-        </section>
-      </main>
+          <button className="dropdown-btn" onClick={toggleDropdown3}>
+            <i className="fas fa-book"></i> <b className="cns account">Cài Ngân Sách</b> 
+            <i className={`fa fa-caret-${dropdownActive3 ? "up" : "down"}`}></i>
+          </button>
+          <div className={`dropdown-container ${dropdownActive3 ? "active" : ""}`}>
+            <a href="/Budget">Thêm Chi Phí</a>
+            <a href="/BudgetList">Danh sách</a>
+          </div>
+          <a href="/Total">
+            <i className="fas fa-chart-bar"></i><b className="account user">Tổng Chi tiêu</b> 
+          </a>
+          <a href="/userList">
+            <i className="fas fa-user"></i><b className="account user">Tài Khoản Users</b> 
+          </a>
+          <div className="Logoquanly">
+            <img
+              src="https://photo2.tinhte.vn/data/attachment-files/2021/07/5551804_logo-bg_1.png"
+              alt=""
+              style={{ height: "50px", width: "190px", marginTop: "350px" }}
+            />
+          </div>
+          <br />
+        </div>
+        {/* Main content (8 columns) */}
+        <div className="col-8">
+          {/* Add your main content here */}
+        </div>
+      </div>
     </div>
   );
 }

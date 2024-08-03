@@ -63,7 +63,7 @@ function SignIn() {
                 </div>
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary">Đăng Nhập</button>
-                    <p className='mt-3'>Nếu chưa có tài khoản hãy đăng kí ngay <a href='/signup'>Đăng Kí</a></p>
+                    <p className='mt-3'>Nếu chưa có tài khoản  <a href='/signup'>Đăng Kí</a></p>
                 </div>
             </form>
         </div>

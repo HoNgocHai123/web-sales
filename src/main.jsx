@@ -71,17 +71,18 @@ const router = createBrowserRouter([
         path:"/HomePages",
         element:<HomePages></HomePages>
       },
+      {
+        path:"/Total",
+        element:<MonthlyExpenseSummary></MonthlyExpenseSummary>
+      },
     ],
   },
      
 
-  {
+ {
     path:"/",
     element:<App></App>
   },
-
- 
-
 
 {
   path:"/signup",
@@ -91,10 +92,7 @@ const router = createBrowserRouter([
   path:"/signin",
   element:<SignIn></SignIn>
 },
-{
-  path:"/Total",
-  element:<MonthlyExpenseSummary></MonthlyExpenseSummary>
-},
+
 
 
 

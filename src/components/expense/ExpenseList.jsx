@@ -1,12 +1,15 @@
-// ExpenseList.js
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase-config';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
-
-import '../css.css';
 import Swal from 'sweetalert2';
+import '../css.css';
+
+// Helper function to format numbers with commas
+const formatNumber = (number) => {
+  return number.toLocaleString();
+};
 
 const ExpenseList = () => {
   const [expenses, setExpenses] = useState([]);
@@ -49,7 +52,7 @@ const ExpenseList = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-3">
-          
+          {/* Additional content can be added here if needed */}
         </div>
         <div className="col-md-9 abcc">
           <h3>Danh Sách Chi Tiêu</h3>
@@ -73,7 +76,7 @@ const ExpenseList = () => {
                     <td>{expense.DanhMuc}</td>
                     <td>{expense.MoTa}</td>
                     <td>{expense.NgayThang}</td>
-                    <td>{expense.SoTien} VND</td>
+                    <td>{formatNumber(expense.SoTien)} VND</td>
                     <td>
                       <Link
                         to={`/EditExpense/${expense.id}`}

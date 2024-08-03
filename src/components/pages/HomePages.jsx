@@ -1,117 +1,109 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
-
 import "./Pages.css";
+import { axisClasses } from "@mui/x-charts/ChartsAxis";
 import { BarChart } from "@mui/x-charts/BarChart";
-const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-const xLabels = [
-  "Page A",
-  "Page B",
-  "Page C",
-  "Page D",
-  "Page E",
-  "Page F",
-  "Page G",
+
+const otherSetting = {
+  height: 350,
+  yAxis: [{ label: "rainfall (mm)" }],
+  grid: { horizontal: true },
+  sx: {
+    [`& .${axisClasses.left} .${axisClasses.label}`]: {
+      transform: "translateX(-10px)",
+    },
+  },
+};
+
+const dataset = [
+  { london: 59, paris: 57, newYork: 86, seoul: 21, month: "Tháng 1" },
+  { london: 50, paris: 52, newYork: 78, seoul: 28, month: "Tháng 2" },
+  { london: 47, paris: 53, newYork: 106, seoul: 41, month: "Tháng 3" },
+  { london: 54, paris: 56, newYork: 92, seoul: 73, month: "Tháng 4" },
+  { london: 57, paris: 69, newYork: 92, seoul: 99, month: "Tháng 5" },
+  { london: 60, paris: 63, newYork: 103, seoul: 144, month: "Tháng 6" },
+  { london: 59, paris: 60, newYork: 105, seoul: 319, month: "Tháng 7" },
+  { london: 65, paris: 60, newYork: 106, seoul: 249, month: "Tháng 8" },
+  { london: 51, paris: 51, newYork: 95, seoul: 131, month: "Tháng 9" },
+  { london: 60, paris: 65, newYork: 97, seoul: 55, month: "Tháng 10" },
+  { london: 67, paris: 64, newYork: 76, seoul: 48, month: "Tháng 11" },
+  { london: 61, paris: 70, newYork: 103, seoul: 25, month: "Tháng 12" },
 ];
+
+const valueFormatter = (value) => `${value}mm`;
+
 function HomePages() {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-2">
-        </div>
-        <div className="col-md-10 abcb">
+        <div className="col-md-2"></div>
+        <div className="col-md-10 abcv">
           <main className="main-content">
             <section className="overview">
               <div className="income-spending">
                 <div className="card">
-                  Income after bills & savings
-                  <br />
-                  $00,000
-                </div>
-                <div className="card ">
-                  Planned Spending
-                  <br />
-                  $00,000
+                  <h6>
+                    <b>Tiền Phí Sinh Hoạt</b>
+                  </h6>
+                  <p>12.000.000</p>
                 </div>
                 <div className="card">
-                  Other Spending
-                  <br />
-                  $00,000
+                  <h5>Tiền Nhà</h5>
+                  <p>12.000.000</p>
+                </div>
+                <div className="card">
+                  <h5>Tiền Nhà</h5>
+                  <p>12.000.000</p>
+                </div>
+                <div className="card">
+                  <h5>Tiền Nhà</h5>
+                  <p>12.000.000</p>
                 </div>
               </div>
               <div className="details">
                 <BarChart
-                  width={800}
-                  height={300}
-                  series={[
-                    { data: pData, label: "pv", id: "pvId", stack: "total" },
-                    { data: uData, label: "uv", id: "uvId", stack: "total" },
+                  dataset={dataset}
+                  xAxis={[
+                    {
+                      scaleType: "band",
+                      dataKey: "month",
+                      valueFormatter: (month, context) =>
+                        context.location === "tick" ? month : month,
+                    },
                   ]}
-                  xAxis={[{ data: xLabels, scaleType: "band" }]}
+                  series={[
+                    {
+                      dataKey: "seoul",
+                      label: "Seoul rainfall",
+                      valueFormatter,
+                    },
+                  ]}
+                  {...otherSetting}
                 />
               </div>
             </section>
-            <section className="expenses">
-              <div className="category">
-                <h2>Rent</h2>
-                <p>Spending Category: Rent</p>
-                <div className="expense-bar">
-                  <span>$18.00 left</span>
-                  <div className="bar">
-                    <div className="filled" style={{ width: "90%" }}></div>
-                  </div>
-                </div>
-                <div className="last-six-months">
-                  <h3>Last 6 months</h3>
-                  <div className="chart">
-                    <div className="bar" style={{ height: "50%" }}>
-                      $1000
-                    </div>
-                    <div className="bar" style={{ height: "80%" }}>
-                      $800
-                    </div>
-                    <div className="bar" style={{ height: "60%" }}>
-                      $600
-                    </div>
-                    <div className="bar" style={{ height: "70%" }}>
-                      $700
-                    </div>
-                    <div className="bar" style={{ height: "90%" }}>
-                      $900
-                    </div>
-                    <div className="bar" style={{ height: "40%" }}>
-                      $400
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="transactions">
-                <h3>Transactions</h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Account</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Payee</th>
-                      <th>Category</th>
-                      <th>Tags</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>REITS</td>
-                      <td>3 Mar 24</td>
-                      <td>-</td>
-                      <td>Opening Balance</td>
-                      <td>Groceries</td>
-                      <td></td>
-                    </tr>
-                    {/* More rows as needed */}
-                  </tbody>
-                </table>
-              </div>
+            <section className="transactions">
+              <h3></h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Ngày Tháng</th>
+                    <th>Cài Đặt Ngân Sách</th>
+                    <th>Tổng Chi Tiêu Hàng Tháng</th>
+                    <th>Số Dư</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>12/07/2024</td>
+                    <td>4.000.000</td>
+                    <td>2.300.000</td>
+                    <td>2.700.000</td>
+                    
+                  </tr>
+                  {/* More rows as needed */}
+                </tbody>
+              </table>
             </section>
           </main>
         </div>

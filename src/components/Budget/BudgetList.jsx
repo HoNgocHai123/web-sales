@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase-config';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
-
 import Swal from 'sweetalert2';
 import '../css.css';
+
+// Helper function to format numbers with commas
+const formatNumber = (number) => {
+  return number.toLocaleString();
+};
 
 const BudgetList = () => {
   const [items, setItems] = useState([]);
@@ -22,7 +26,7 @@ const BudgetList = () => {
       const data = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
-        NgayThang: doc.data().NgayThang?.toDate().toLocaleDateString(), // Convert date to readable format
+        NgayThang: doc.data().NgayThang?.toDate().toLocaleDateString(), 
       }));
       setItems(data);
     } catch (error) {
@@ -44,7 +48,7 @@ const BudgetList = () => {
         icon: 'success',
         title: 'Xóa thành công',
         showConfirmButton: false,
-        timer: 1500,
+        timer: 17500,
       });
       fetchData(); // Reload the list
     } catch (error) {
@@ -61,7 +65,7 @@ const BudgetList = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-3">
-          
+          {/* You can add additional content here if needed */}
         </div>
         <div className="col-md-9 abcm">
           <h3>Danh Sách Ngân Sách</h3>
@@ -86,7 +90,7 @@ const BudgetList = () => {
                       <td>{item.id}</td>
                       <td>{item.DanhMuc}</td>
                       <td>{item.NgayThang}</td>
-                      <td>{item.SoTien}</td>
+                      <td>{formatNumber(item.SoTien)} VNĐ</td>
                       <td>
                         <Link
                           to={`/budgetedit/${item.id}`} // Update the link to BudgetEdit

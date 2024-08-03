@@ -158,9 +158,9 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
 }
 .abcc {
-  margin-top: -240px;
+  margin-top: 50px;
   margin-left: 230px;
-  width: 1200px; 
+  width: 100px; 
   background-color: #fff; 
   padding: 20px; 
   border-radius: 8px; 
@@ -169,9 +169,9 @@
 }
 .abcm {
   
-  margin-top: -240px;
+  margin-top: 70px;
   margin-left: 230px;
-  width: 1200px; 
+  width: 100%;
   background-color: #fff; 
   padding: 20px; 
   border-radius: 8px; 
@@ -239,14 +239,19 @@
   text-align: left;
 }
 .abc{
-  margin-left: 300px;
+  margin-left: 230px;
   width: 1000px;
-  margin-top: -100px;
+  margin-top: 250px;
+}
+.abcl{
+  margin-left: 230px;
+  width: 1000px;
+  margin-top: 150px;
 }
 .abcb{
-  width: 1000px;
-  margin-left: 300px;
-   margin-top: 900px;
+  width: 2000px;
+  margin-left: 240px;
+   margin-top: 100px;
 }
 .Logoquanly{
   width: 11px;

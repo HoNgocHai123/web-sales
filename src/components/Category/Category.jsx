@@ -53,7 +53,7 @@ function Category() {
         <div className="col-md-8 abc">
           <div style={styles.body}>
             <div style={styles.container}>
-              <h2>Thêm Danh Mục</h2>
+              <h3>Thêm Danh Mục</h3>
               <form id="categoryForm" onSubmit={handleSubmit}>
                 <div style={styles.formGroup}>
                   <label htmlFor="categoryName" style={styles.label}>

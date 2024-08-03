@@ -1,14 +1,16 @@
 .vbn{
     width: 900px;
     margin-left: 10px;
-
     
-}
-.vbn2{
+    
+  }
+  .vbn2{
+    
     width: 1000px;
 }
 .maginxuong{
     margin-top: 100px;
+    margin-left: -100px;
     
 }
 .custom-table {

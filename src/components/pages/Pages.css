@@ -1,413 +1,163 @@
-.container-fluid {
-    padding: 0;
-    margin-top: 60px;
-    margin-left: -50px;
-  }
-  
-  .abcb {
-    
-    width: 80%;  
-    margin-top: -90px;  
-  } 
-  .main-content {
-    padding: 20px;
-    
-  }
-  
-  .overview {
-    margin-bottom: 20px;
-    
-  }
-  .transactions {
-    width: 300px;
-    position: relative;
-    left: -120px; /* Moves the element 100px to the left */
-  }
-  
-  .transactions table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .transactions th,
-  .transactions td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .transactions th {
-    background-color: #f2f2f2;
-  }
-  
-  
-  .income-spending {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .card {
-    
-    border: 1px solid #dee2e6;
-    border-radius: 4px;
-    padding: 10px;
-    text-align: center;
-    flex: 1;
-    margin: 5px;
-  }
-  
-  .card.selected {
-    background-color: #007bff;
-    color: #ffffff;
-  }
-  
-  .details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .balance {
-    font-size: 1.5rem;
-  }
-  
-  
-  
-  
-  .expenses .category {
-    margin-bottom: 20px;
-  }
-  
-  .expense-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .expense-bar .bar {
-    width: 80%;
-    height: 20px;
-    background-color: #e9ecef;
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-  }
-  .transactions{
-    margin-left: -100px;
-  }
-  
-  .expense-bar .filled {
-    background-color: #28a745;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  .last-six-months .chart {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-  
-  .last-six-months .bar {
-    width: 14%;
-    background-color: #007bff;
-    color: #ffffff;
-    text-align: center;
-    padding: 2px 0;
-    border-radius: 4px;
-  }
-  
+/* Thiết lập các kiểu cơ bản cho toàn bộ trang */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Bố cục chính của trang */
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+/* Định dạng các phần tử chính trong trang chính */
+.overview, .transactions {
+  margin-bottom: 20px;
+}
+
+/* Bố cục cho phần tổng quan */
+.income-spending {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Định dạng các thẻ bài trong phần tổng quan */
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  margin: 5px;
+}
+
+/* Định dạng bảng trong phần giao dịch */
+.transactions table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.transactions th, .transactions td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.transactions th {
+  background-color: #f2f2f2;
+}
+
+/* Bố cục của phần chi tiết */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Định dạng các thanh trong phần chi tiết */
+.expense-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+/* Định dạng các thanh chi phí */
+.expense-bar .bar {
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  position: relative;
+}
+
+.expense-bar .filled {
+  height: 100%;
+  background-color: #4caf50;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Định dạng các biểu đồ */
+.pie-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Định dạng các phần tử điều hướng */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Định dạng các nút */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Media Queries cho các thiết bị di động */
+@media (max-width: 768px) {
+  .overview, .income-spending, .details {
+    flex-direction: column;
   }
-  
-  .container {
-    display: flex;
-    height: 100vh;
+
+  .transactions {
+    margin-left: 0;
     width: 100%;
   }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-   
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
 
-  
-  
-  .sidebar {
-    width: 250px;
-    background-color: #f7f7f7;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .sidebar .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-  
-  .sidebar nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar nav ul li {
-    padding: 10px 0;
-    cursor: pointer;
-  }
-  
-  .sidebar nav ul li.active {
-    font-weight: bold;
-  }
-  
-  .sidebar .settings {
-    margin-top: auto;
-    padding-top: 20px;
-  }
-  
-  .main-content {
-    flex-grow: 1;
-    background-color: #fff;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  header input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  header .user-profile {
-    font-weight: bold;
-  }
-  
-  .overview {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .income-spending {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .card {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    text-align: center;
-  }
-  
-  .card.selected {
-    border-color: #007bff;
-    background-color: #e9f5ff;
-  }
-  .details-container {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #544949;
-    width: 100%; /* Make the container full width */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-  }
-
-  /* đăng ký đăng nhâp */
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #007bff; /* Blue color */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    margin-right: 10px; /* Spacing between buttons */
-    
-    
-  }
-  hr {
-    border: none; /* Xóa viền mặc định */
-    border-top: 2px solid #000; /* Đặt viền màu đen với độ dày 2px */
-  }
-  .auth-buttons{
-    display: flex;
-    margin-left: 760px;
-  }
-  
-  .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
-  .btn-secondary {
-    background-color: #6c757d; /* Gray color */
-    
-  }
-  
-  .btn-secondary:hover {
-    background-color: #5a6268; /* Darker gray on hover */
-  }
-  /* Hết Đăng Ký Đăng nhâp */
-  
-  .details {
-    margin-top: 40px;
-    margin-left: -110px;
-    height: 170px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .pie-chart {
     width: 100%;
-    border-radius: 20px;
-    
+  }
 
-  }
-  
-  
-  
-  .pie-chart .chart {
-    width: 90px;
-    height: 90px;
-    background: conic-gradient(#4caf50 0%, #4caf50 60%, #f44336 60%, #f44336 80%, #ffeb3b 80%);
-    border-radius: 50%;
-    margin-right: 20px;
-  }
-  
-  .pie-chart .legend {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .pie-chart .legend span {
-    display: flex;
-    align-items: center;
-  }
-  
-  .pie-chart .legend span::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  .pie-chart .legend .available::before {
-    background-color: #4caf50;
-  }
-  
-  .pie-chart .legend .planned-spending::before {
-    background-color: #f44336;
-  }
-  
-  .pie-chart .legend .other-spending::before {
-    background-color: #ffeb3b;
-  }
-  
-  
-  .expenses {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-left: 250px;
-    margin-top: -100px;
-  }
-  
-  
-  .category {
-    flex-basis: 30%;
-  }
-  
-  .category h2 {
+  .auth-buttons {
     margin-top: 0;
   }
-  
-  .category .expense-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%;
     margin: 10px 0;
   }
-  
-  .category .bar {
-    width: 50%;
-    height: 10px;
-    background-color: #ddd;
-    border-radius: 5px;
-    margin-left: 10px;
-    position: relative;
-  }
-  
-  .category .bar .filled {
-    height: 100%;
-    background-color: #4caf50;
-    border-radius: 5px;
-  }
-  
-  .last-six-months {
-    margin-top: 20px;
-  }
-  
-  .last-six-months .chart {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .last-six-months .chart .bar {
-    width: 30px;
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    padding-top: 5px;
-  }
-  
-  .transactions {
-    flex-basis: 45%;
-  }
-  
+
   .transactions table {
-    width: 100%;
-    border-collapse: collapse;
+    font-size: 12px;
   }
-  
-  .transactions table th,
-  .transactions table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .transactions table thead {
-    background-color: #f9f9f9;
-  }
-  
-  
+}

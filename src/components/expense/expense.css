@@ -1,4 +1,9 @@
-.abnm{
-    width: 7000px;
-    
+.containernb-lay{
+    margin-left: 10px;
+    width: 900px;
 }
+.containernb-lay{
+    margin-left: -100px;
+    width: 100%;
+}
+

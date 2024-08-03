@@ -68,13 +68,12 @@ function Expense() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-3">
-          
+        <div className="col-md-3">         
         </div>
-        <div className="col-md-9 abcb">
-          <div  style={styles.body}>
+        <div className="col-md-9">
+          <div className="containernb-lay"  style={styles.body}>
             <div className="abnm" style={styles.container}>
-              <h2>Thêm Chi Tiêu</h2>
+              <h3><b>Thêm Chi Tiêu</b></h3>
               <form id="expenseForm" onSubmit={handleSubmit}>
                 <div style={styles.formGroup}>
                   <label htmlFor="categoryName" style={styles.label}>
@@ -162,10 +161,10 @@ const styles = {
     fontFamily: "Arial, sans-serif",
     backgroundColor: "#f0f0f0",
     padding: "20px",
-    marginTop: "0px",
+    marginTop: "30px",
   },
   container: {
-    maxWidth: "900px",
+    maxWidth: "1000px",
     backgroundColor: "#fff",
     padding: "20px",
     borderRadius: "5px",
@@ -181,7 +180,7 @@ const styles = {
     marginBottom: "5px",
   },
   inputText: {
-    width: "90%",
+    width: "100%",
     padding: "10px",
     fontSize: "15px",
     border: "1px solid #ccc",

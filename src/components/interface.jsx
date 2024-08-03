@@ -70,7 +70,7 @@ console.log(userEmail)
     <div className="container-fluid">
       <div className="row">
         {/* Sidebar (4 columns) */}
-        <div className="col-4 sidenav">
+        <div className="col-8 sidenav">
           <div>
             {userEmail ? (
               <div className="d-flex align-items-center" style={{ marginTop: "0px" }}>
@@ -137,17 +137,11 @@ console.log(userEmail)
      
               </div>
             )}
-          <div className="Logoquanly">
-            <img
-              src="https://photo2.tinhte.vn/data/attachment-files/2021/07/5551804_logo-bg_1.png"
-              alt=""
-              style={{ height: "50px", width: "190px", marginTop: "350px" }}
-            />
-          </div>
+         
           <br />
         </div>
         {/* Main content (8 columns) */}
-        <div className="col-8">
+        <div className="col-2">
           {/* Add your main content here */}
         </div>
       </div>

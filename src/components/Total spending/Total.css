@@ -1,5 +1,84 @@
-.Totalchi{
-   width: 900px;
-    margin-left: 300px;
-    margin-top: -300px;
-}
+  .Totalchi{
+      width: 1200px;
+      margin-left: -100px;
+      margin-top:150px;
+  }
+  h1{
+      height: 40px;
+      background-color: #040a7a;
+  }
+  .input-container{
+      width: 100%;
+  }
+  .expense-amount {
+      color: red;
+      font-weight: bold; /* Có thể thêm để làm cho số tiền nổi bật hơn */
+    }
+    
+  .card-title {
+      color: white;
+      padding: 4px;
+      font-size: 1.3em; /* Có thể thay đổi kích thước chữ nếu cần */
+      font-weight: bold; /* Có thể thêm nếu muốn chữ đậm */
+      margin-bottom: 20px;
+      text-align: center; /* Thêm khoảng cách dưới tiêu đề nếu cần */
+    }
+    
+  .input-container {
+      width: 100%;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .custom-table th,
+    .custom-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    
+    .custom-table th {
+      background-color: #040a7a;
+      color: #faf9f9;
+      font-weight: bold;
+    }
+    
+    .custom-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    .custom-table tr:hover {
+      background-color: #f1f1f1;
+    }
+    .ngansach tr td{
+      text-align: center;
+    }
+    .ngansach {
+    border-top: 1px solid #b3b1b1;
+  }
+
+  .ngansach tr {
+    transition: background-color 0.3s ease;
+  }
+
+  .ngansach td {
+    padding: 12px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+  }
+
+  .ngansach tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .ngansach tr:hover {
+    background-color: #f1f1f1;
+  }
+
+    

@@ -68,10 +68,10 @@ const BudgetEdit = () => {
                 <div className="col-md-3">
                     
                 </div>
-                <div className="col-md-9 abc">
+                <div className="col-md-9 abcl">
                     <div style={styles.body}>
                         <div style={styles.container}>
-                            <h2>Chỉnh Sửa Ngân Sách</h2>
+                            <h3>Chỉnh Sửa Ngân Sách</h3>
                             <form id="budgetForm" onSubmit={handleSubmit}>
                                 <div style={styles.formGroup}>
                                     <label htmlFor="categoryName" style={styles.label}>

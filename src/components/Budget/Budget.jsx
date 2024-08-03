@@ -9,7 +9,7 @@ function Budget() {
   const [budget, setBudget] = useState({
     DanhMuc: '',
     SoTien: '',
-    NgayThang: '' // Added date field
+    NgayThang: '', 
   });
 
   const handleChange = (e) => {
@@ -55,10 +55,10 @@ function Budget() {
         <div className="col-md-3">
             
         </div>
-        <div className="col-md-8 abc">
+        <div className="col-md-8 abcl">
           <div style={styles.body}>
             <div style={styles.container}>
-              <h2>Thêm Ngân Sách</h2>
+              <h3><b>Cài Đặt Ngân Sách</b></h3>
               <form id="budgetForm" onSubmit={handleSubmit}>
                 <div style={styles.formGroup}>
                   <label htmlFor="categoryName" style={styles.label}>

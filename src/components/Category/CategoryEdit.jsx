@@ -13,8 +13,8 @@ import "./Category.css"
 const EditCategory = () => {
     const { id } = useParams(); // Lấy id từ URL
     const [DanhMuc, setDanhMuc] = useState('');
-  const [category,setCategory] = useState(null);
-  const navigate = useNavigate();
+    const [category,setCategory] = useState(null);
+    const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -59,13 +59,12 @@ const handleSubmit = async (event) => {
     <div className="container">
     <div className="row">
       <div className="col-md-3">
-        {/* Interface component */}
-    
+        {/* Interface component */} 
       </div>
       <div className="col-md-9 maginxuong ">
         <div className='vbn2' style={styles.body}>
           <div className='vbn' style={styles.container}>
-            <h2>Chỉnh Sửa Danh Mục</h2>
+            <h3>Chỉnh Sửa Danh Mục</h3>
             <form id="categoryForm" onSubmit={handleSubmit}>
               <div style={styles.formGroup}>
                 <label htmlFor="editCategoryName" style={styles.label}>

@@ -11,11 +11,13 @@ function SignUp() {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors }, watch, } = useForm();
   const password = watch("password");
-  const onSubmit = async (data) => {
+
+  
+  const onSubmit = async (data) =>{
     const { username, email, password } = data;
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      await addDoc(collection(db, "users"), {
+      await addDoc(collection(db, "users"),{
         email,
         createdAt: serverTimestamp(),
         displayName: username,
@@ -42,7 +44,7 @@ function SignUp() {
       <div className="row justify-content-center ">
         <div className="col-lg-7 SingUpFrom">
           <form onSubmit={handleSubmit(onSubmit)} className=" mt-5 border p-4 rounded shadow" style={{  background: "rgb(239, 236, 236)" }}>
-            <h2 className="text-center mb-4"><b>ĐĂNG KÝ</b></h2>
+            <h3 className="text-center mb-4"><b>ĐĂNG KÝ</b></h3>
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
                 Tên người dùng

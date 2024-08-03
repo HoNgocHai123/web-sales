@@ -42,7 +42,7 @@ function HomePages() {
               <div className="income-spending">
                 <div className="card">
                   <h6>
-                    <b>Tiền Phí Sinh Hoạt</b>
+                    <b>Tiền Phí</b>
                   </h6>
                   <p>12.000.000</p>
                 </div>

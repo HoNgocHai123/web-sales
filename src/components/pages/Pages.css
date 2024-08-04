@@ -19,6 +19,15 @@ body {
 .overview, .transactions {
   margin-bottom: 20px;
 }
+.overview h2{
+  height: 50px;
+  text-align: center;
+  background-color: #02B2AF;
+  border-radius: 10px;
+  font-size: 25px;
+  padding: 10px;
+
+}
 
 /* Bố cục cho phần tổng quan */
 .income-spending {

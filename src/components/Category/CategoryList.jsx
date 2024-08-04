@@ -55,7 +55,7 @@ const ListComponent = () => {
           <h3>Danh Sách Danh Mục</h3>
           <br />
           <div className="input-container">
-          <table className="table table-bordered table-hover custom-table">
+          <table className="table table-bordered table-hover ">
       <thead>
         <tr>
           <th>ID</th>

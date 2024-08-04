@@ -58,7 +58,7 @@ const ExpenseList = () => {
           <h3>Danh Sách Chi Tiêu</h3>
           <br />
           <div className="input-container">
-            <table className="table table-bordered table-hover custom-table">
+            <table className="table table-bordered table-hover ">
               <thead>
                 <tr>
                   <th>ID</th>

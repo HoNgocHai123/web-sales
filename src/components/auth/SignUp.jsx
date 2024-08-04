@@ -42,8 +42,8 @@ function SignUp() {
   return (
     <div className="container SingUpname">
       <div className="row justify-content-center ">
-        <div className="col-lg-7 SingUpFrom">
-          <form onSubmit={handleSubmit(onSubmit)} className=" mt-5 border p-4 rounded shadow" style={{  background: "rgb(239, 236, 236)" }}>
+        <div className="col-lg-7 ">
+          <form onSubmit={handleSubmit(onSubmit)} className="  border p-4 rounded shadow dangky" style={{  background: "rgb(239, 236, 236)" }}>
             <h3 className="text-center mb-4"><b>ĐĂNG KÝ</b></h3>
             <div className="mb-3">
               <label htmlFor="username" className="form-label">

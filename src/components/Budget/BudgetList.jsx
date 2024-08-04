@@ -65,16 +65,15 @@ const BudgetList = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-3">
-          {/* You can add additional content here if needed */}
         </div>
         <div className="col-md-9 abcm">
           <h3>Danh Sách Ngân Sách</h3>
           <br />
           {loading ? (
-            <p>Loading...</p> // Display loading message while fetching data
+            <p>Loading...</p> 
           ) : (
             <div className="input-container">
-              <table className="table table-bordered table-hover custom-table">
+              <table className="table table-bordered table-hover ">
                 <thead>
                   <tr>
                     <th>ID</th>

@@ -54,7 +54,7 @@ const UserList = () => {
             <p>Loading...</p> // Display loading message while fetching data
           ) : (
             <div className="input-container">
-              <table className="table table-bordered table-hover custom-table">
+              <table className="table table-bordered table-hover ">
                 <thead>
                   <tr>
                     <th>ID</th>

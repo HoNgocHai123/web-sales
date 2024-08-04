@@ -1,5 +1,5 @@
 .singinFrom{
-    
+    width: 100%;
     height: 700px;
     background: url("https://www.cleanipedia.com/images/5iwkm8ckyw6v/7fOq8JmYzRr3BRhNGUaUU4/fa1cb72f54c6eb857180e876d5264fc5/djEtMS0xMDI0eDU3Ni5qcGc/720w-405h/lu%C3%B4n-%C4%91%E1%BA%B7t-ra-m%E1%BB%A5c-ti%C3%AAu-t%C3%A0i-ch%C3%ADnh-r%C3%B5-r%C3%A0ng-l%C3%A0-c%C3%A1ch-qu%E1%BA%A3n-l%C3%BD-chi-ti%C3%AAu-gia-%C4%91%C3%ACnh.jpg");
 }
@@ -11,6 +11,16 @@
 
 }
 .SingUpname{
-    
+    width: 100%;
+    height: 100%;  
     background: url("https://www.cleanipedia.com/images/5iwkm8ckyw6v/7fOq8JmYzRr3BRhNGUaUU4/fa1cb72f54c6eb857180e876d5264fc5/djEtMS0xMDI0eDU3Ni5qcGc/720w-405h/lu%C3%B4n-%C4%91%E1%BA%B7t-ra-m%E1%BB%A5c-ti%C3%AAu-t%C3%A0i-ch%C3%ADnh-r%C3%B5-r%C3%A0ng-l%C3%A0-c%C3%A1ch-qu%E1%BA%A3n-l%C3%BD-chi-ti%C3%AAu-gia-%C4%91%C3%ACnh.jpg");
+}
+.login{
+    width: 500px;
+    border-radius: 10px;
+}
+.dangky{
+    width: 500px;
+    margin-top: 100px;
+    margin-left: 100px;
 }

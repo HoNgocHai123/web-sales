@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Pages.css";
 import { axisClasses } from "@mui/x-charts/ChartsAxis";
 import { BarChart } from "@mui/x-charts/BarChart";
+import { collection, getDocs, Timestamp } from "firebase/firestore";
+import { db } from "../firebase-config";
+import Swal from "sweetalert2";
 
 const otherSetting = {
   height: 350,
@@ -31,7 +34,113 @@ const dataset = [
 
 const valueFormatter = (value) => `${value}mm`;
 
+const formatNumber = (number) => {
+  return number ? number.toLocaleString() : '0';
+};
+
 function HomePages() {
+  const [budgets, setBudgets] = useState([]);
+  const [expenses, setExpenses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchBudgets();
+    fetchExpenses();
+  }, []);
+
+  const fetchBudgets = async () => {
+    setLoading(true);
+    try {
+      const querySnapshot = await getDocs(collection(db, 'Budget'));
+      const data = querySnapshot.docs.map((doc) => {
+        const docData = doc.data();
+        return {
+          id: doc.id,
+          ...docData,
+          NgayThang: docData.NgayThang instanceof Timestamp
+            ? docData.NgayThang.toDate().toISOString().split('T')[0] // YYYY-MM-DD
+            : new Date(docData.NgayThang).toISOString().split('T')[0],
+        };
+      });
+      setBudgets(data);
+    } catch (error) {
+      console.error('Lỗi khi tải dữ liệu ngân sách: ', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi khi tải dữ liệu',
+        text: error.message,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchExpenses = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'Expense'));
+      const data = querySnapshot.docs.map((doc) => {
+        const docData = doc.data();
+        return {
+          id: doc.id,
+          ...docData,
+          NgayThang: docData.NgayThang instanceof Timestamp
+            ? docData.NgayThang.toDate().toISOString().split('T')[0] // YYYY-MM-DD
+            : new Date(docData.NgayThang).toISOString().split('T')[0],
+        };
+      });
+      setExpenses(data);
+    } catch (error) {
+      console.error('Lỗi khi tải dữ liệu chi tiêu: ', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi khi tải dữ liệu',
+        text: error.message,
+      });
+    }
+  };
+
+  // Helper function to get YYYY-MM from YYYY-MM-DD
+  const getMonthYear = (dateString) => dateString.slice(0, 7);
+
+  // Group by month and calculate totals
+  const calculateTotals = (budgets, expenses) => {
+    const totals = {};
+
+    // Process budgets
+    budgets.forEach((budget) => {
+      const monthYear = getMonthYear(budget.NgayThang);
+      if (!totals[monthYear]) {
+        totals[monthYear] = {
+          budget: 0,
+          expense: 0,
+        };
+      }
+      totals[monthYear].budget += budget.SoTien || 0;
+    });
+
+    // Process expenses
+    expenses.forEach((expense) => {
+      const monthYear = getMonthYear(expense.NgayThang);
+      if (!totals[monthYear]) {
+        totals[monthYear] = {
+          budget: 0,
+          expense: 0,
+        };
+      }
+      totals[monthYear].expense += expense.SoTien || 0;
+    });
+
+    // Convert totals to an array for rendering
+    return Object.entries(totals).map(([monthYear, { budget, expense }]) => ({
+      monthYear,
+      budget,
+      expense,
+      balance: budget - expense,
+    }));
+  };
+
+  const monthlyTotals = calculateTotals(budgets, expenses);
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -39,6 +148,7 @@ function HomePages() {
         <div className="col-md-10 abcv">
           <main className="main-content">
             <section className="overview">
+                <h2>CHI TIÊU CỦA THÁNG</h2>
               <div className="income-spending">
                 <div className="card">
                   <h6>
@@ -82,7 +192,7 @@ function HomePages() {
               </div>
             </section>
             <section className="transactions">
-              <h3></h3>
+              <h3>Tổng Ngân Sách và Chi Tiêu</h3>
               <table>
                 <thead>
                   <tr>
@@ -90,18 +200,17 @@ function HomePages() {
                     <th>Cài Đặt Ngân Sách</th>
                     <th>Tổng Chi Tiêu Hàng Tháng</th>
                     <th>Số Dư</th>
-                    
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>12/07/2024</td>
-                    <td>4.000.000</td>
-                    <td>2.300.000</td>
-                    <td>2.700.000</td>
-                    
-                  </tr>
-                  {/* More rows as needed */}
+                  {monthlyTotals.map((total, index) => (
+                    <tr key={index}>
+                      <td>{total.monthYear}</td>
+                      <td>{formatNumber(total.budget)}</td>
+                      <td>{formatNumber(total.expense)}</td>
+                      <td>{formatNumber(total.balance)}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </section>

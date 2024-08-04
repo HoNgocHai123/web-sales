@@ -39,7 +39,7 @@ function SignIn() {
 
     return (
         <div className="container d-flex justify-content-center singinFrom">
-            <form onSubmit={handleSubmit(onSubmit)} className="w-40 h-50 border p-4" style={{ marginTop: "200px", background: "rgb(239, 236, 236)" }}>
+            <form onSubmit={handleSubmit(onSubmit)} className="w-40 h-50 border p-4 login" style={{ marginTop: "200px", background: "rgb(239, 236, 236)",  }}>
                 <h3 className="text-center mb-4"><b>ĐĂNG NHẬP</b></h3>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email:</label>
